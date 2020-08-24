@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//#define debug
+int handshake(int n) {
+    return (n*(n-1))/2;
+}
+int main()
+{
+
+#ifdef debug
+    freopen("C:/Users/jahid/Desktop/New Text Document.txt","r",stdin);
+#endif
+
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int n;
+        cin >> n;
+
+        int result = handshake(n);
+
+        cout << result << "\n";
+    }
+    return 0;
+}
