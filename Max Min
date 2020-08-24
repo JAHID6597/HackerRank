@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    long long n,k,ans=INT_MAX,Min=0;
+    cin>>n>>k;
+
+    long long a[n];
+    for(long long i=0;i<n;i++){
+        cin>>a[i];
+    }
+
+    sort(a,a+n);
+
+    for(long long i = 0 , j = k-1; j<n; i++){
+        Min = a[j]-a[i];
+        ans = min(ans,Min);
+        j++;
+    }
+    cout<<ans<<endl;
+
+    return 0;
+}
