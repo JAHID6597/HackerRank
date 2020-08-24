@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+
+    int t;
+    cin>>t;
+    while(t--){
+        int n,sum=0,ans=0,ns=0,neg=0;
+    cin>>n;
+    vector<int> v;
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        v.push_back(x);
+        sum = max(sum+x , x);
+        ans = max(sum,ans);
+
+        if(x>0)ns+=x;
+        if(x<0)neg++;
+    }
+    
+    if(neg == n)cout<<*max_element(v.begin(),v.end())<<" "<<*max_element(v.begin(),v.end())<<endl;
+    else cout<<ans<<" "<<ns<<endl;
+    }
+    
+    return 0;
+}
