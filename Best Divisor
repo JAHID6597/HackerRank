@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<pair<int,int> > Max;
+int ans = 1;
+int temp_s = 0;
+
+int max_sum(int n)
+{
+    int s = 0,t=n;
+    while(n>0){
+        int rem = n%10;
+        s += rem;
+        n = n / 10;
+    }
+    return s;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int n;
+    cin>>n;
+
+    for(int i=1; i*i <= n ; i++){
+        if(n%i == 0){
+            int x;
+            if(i*i == n){
+                x = max_sum(i);
+                if(x>temp_s)temp_s=x,ans=i;
+
+                if(x==temp_s)ans=min(i,ans);
+            }
+            else {
+                x = max_sum(i);
+                if(x>temp_s)temp_s=x,ans=i;
+                if(x==temp_s)ans=min(i,ans);
+                x = max_sum(n/i);
+                if(x>temp_s)temp_s=x,ans=n/i;
+                if(x==temp_s)ans=min(n/i,ans);
+            }
+        }
+    }
+
+    cout<<ans<<endl;
+
+    return 0;
+}
