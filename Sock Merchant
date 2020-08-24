@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//#define debug
+
+int main()
+{
+
+#ifdef debug
+    freopen("C:/Users/jahid/Desktop/New Text Document.txt","r",stdin);
+#endif
+
+    int n,i,cnt=0,c=0;
+
+    cin>>n;
+    vector<int> v;
+    for(i=0; i<n; i++)
+    {
+        int x;
+        cin>>x;
+        v.push_back(x);
+    }
+    sort(v.begin(),v.end());
+    int t = v[0];
+    for(i=0; i<n; i++)
+    {
+        if(t==v[i])
+        {
+            c++;
+            if(c%2==0)
+                cnt++;
+        }
+        else
+        {
+            t=v[i];
+            c=0;
+            i--;
+        }
+    }
+    cout<<cnt;
+    return 0;
+}
