@@ -1,0 +1,30 @@
+/// Bismillahir Rahmanir Raheem
+/// In the name of Allah , Most Gracious , Most Merciful
+
+#include<bits/stdc++.h>
+using namespace std;
+
+#define BOOST ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+#define pi acos(-1.0)
+#define DEBUG freopen("input.txt","r",stdin)
+
+
+
+int main()
+{
+    BOOST;
+    //DEBUG;
+
+    int n;
+    cin>>n;
+    long long c[n];
+    for(long long i=0;i<n;i++)cin>>c[i];
+    sort(c,c+n);
+    long long s=0;
+    for(long long i=n-1,j=0;i>=0;i--){
+        s+=(pow(2,j)*c[i]);
+        j++;
+    }
+    cout<<s<<endl;
+    return 0;
+}
