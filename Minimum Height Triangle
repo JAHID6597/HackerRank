@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//#define debug
+
+int main()
+{
+
+#ifdef debug
+    freopen("C:/Users/jahid/Desktop/New Text Document.txt","r",stdin);
+#endif
+
+    double b,a,h,p;
+    int H;
+    cin>>b>>a;
+    H = ((2*a)/b);
+    h = ((2*a)/b);
+    p = h-H;
+    int ans = h;
+    if(p==0)cout<<ans<<endl;
+    else cout<<ans+1<<endl;
+    return 0;
+}
