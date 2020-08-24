@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//#define debug
+
+int main()
+{
+
+#ifdef debug
+    freopen("C:/Users/jahid/Desktop/New Text Document.txt","r",stdin);
+#endif
+
+    int t,p=0,n=0,z=0,i;
+    double ans_p,ans_n,ans_z;
+
+    cin>>t;
+
+    int a[t];
+    for(i=1;i<=t;i++)
+    {
+        cin>>a[i];
+        if(a[i]==0)z++;
+        else if(a[i]>0)p++;
+        if(a[i]<0)n++;
+    }
+
+    ans_p = (double)p/t;
+    ans_n = (double)n/t;
+    ans_z = (double)z/t;
+
+    printf("%.6lf\n%.6lf\n%.6lf\n",ans_p,ans_n,ans_z);
+    return 0;
+}
