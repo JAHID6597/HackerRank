@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//#define debug
+
+int main()
+{
+
+#ifdef debug
+    freopen("C:/Users/jahid/Desktop/New Text Document.txt","r",stdin);
+#endif
+
+    int n,r,i;
+
+    cin>>n>>r;
+    vector<int> v;
+    for(i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        v.push_back(x);
+    }
+    for(i=1;i<=r;i++)
+    {
+        int t=v[0];
+        v.erase(v.begin());
+        v.push_back(t);
+    }
+    for(i=0;i<n;i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    return 0;
+}
