@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+long long maximumToys(long long price[],long long k, long long n)
+{
+    long long maxToy = 0 , sum=0;
+
+    for(long long i = 0 ; i<n && price[i]<k ; i++){
+        if(sum <= k){
+            sum += price[i];
+            if(sum <= k)maxToy++;
+        }
+        else break;
+    }
+
+    return maxToy;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    long long n,k,c=0;
+    cin>>n>>k;
+
+    long long prices[n];
+    for(long long i=0;i<n;i++){
+        cin>>prices[i];
+    }
+    sort(prices,prices+n);
+
+    cout<<maximumToys(prices , k, n);
+
+    return 0;
+}
