@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    //freopen("input.txt","r",stdin);
+
+    long long t;
+    cin>>t;
+    while(t--)
+    {
+        long long n,m,sum=0,ans=0,res=0;
+        cin>>n>>m;
+        long long  a[n];
+        set<long long> s;
+        s.insert(0);
+        for(long long i=0;i<n;i++){
+            cin>>a[i];
+            sum = (sum+a[i])%m;
+            ans = max(ans,sum);
+            
+            if(s.end() != s.lower_bound(sum+1)){
+                ans = max(ans,(sum-*s.lower_bound(sum+1)+m)%m);
+            }
+
+            s.insert(sum);
+            
+        }
+        cout<<ans<<endl;
+    }
+    return 0;
+}
