@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    vector<int> v[100001];
+
+    int n,q,last_ans=0;
+    cin>>n>>q;
+    while(q--){
+        int t,x,y;
+        cin>>t>>x>>y;
+        
+        if(t == 1){
+            int idx = ((x^last_ans)%n);
+            v[idx].push_back(y);
+        }
+        
+        else{
+            int idx = ((x^last_ans)%n);
+            int pos = y%v[idx].size();
+            last_ans = v[idx][pos];
+            cout<<last_ans<<endl;
+        }
+    }
+
+    return 0;
+}
