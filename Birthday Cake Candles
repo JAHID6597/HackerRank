@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    long long MAX, c=0, n;
+    cin>>n;
+
+    vector<long long> v;
+    for(long long i = 0 ; i < n ; i++){
+        int x;
+        cin>>x;
+        v.push_back(x);
+    } 
+    
+    sort(v.begin(),v.end());
+    MAX = v[n-1];
+
+    for(long long i = n-1 ; i >= 0 ; i--){
+        if(MAX == v[i])c++;
+        else break;
+    }
+
+    cout<<c<<endl;
+    
+    return 0;
+}
