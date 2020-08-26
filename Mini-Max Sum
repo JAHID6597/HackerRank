@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    long long MAX = 0, MIN = 0, SUM = 0;
+    vector<long long> v;
+    
+    for(long long i=0;i<5;i++){
+        long long x;
+        cin>>x;
+        v.push_back(x);
+        SUM += x;
+    }
+    
+    sort(v.begin(),v.end());
+
+    MIN = SUM - v[4];
+    MAX = SUM - v[0];
+
+    cout<<MIN<<" "<<MAX<<endl;
+    
+    return 0;
+}
