@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    queue<long long> q;
+    while (t--) {
+        int type;
+        cin>>type;
+        long long x;
+        if(type == 1)cin>>x, q.push(x);
+        else if(type == 2)q.pop();
+        else cout<<q.front()<<endl;
+    }
+}
