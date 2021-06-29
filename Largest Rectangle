@@ -1,0 +1,86 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<long long> leftRight(vector<long long> &v, long long  n){
+    vector<long long> newV;
+    stack<long long> maintainOrder;
+    for(long long i=0;i<n;i++){
+        if(maintainOrder.empty()){
+            maintainOrder.push(i);
+            newV.push_back(0);
+        }else{
+            if(v[maintainOrder.top()] >= v[i]){
+                while(!maintainOrder.empty() && v[maintainOrder.top()] >= v[i])
+                    maintainOrder.pop();
+                if(maintainOrder.empty()){
+                    maintainOrder.push(i);
+                    newV.push_back(0);
+                }else{
+                    long long idx = maintainOrder.top()+1;
+                    maintainOrder.push(i);
+                    newV.push_back(idx);
+                }
+            }else{
+                long long idx = maintainOrder.top()+1;
+                maintainOrder.push(i);
+                newV.push_back(idx);
+            }
+        }
+    }
+    return newV;
+}
+
+vector<long long> rightLeft(vector<long long> &v, long long  n){
+    vector<long long> newV;
+    stack<long long> maintainOrder;
+    for(long long i=n-1;i>=0;i--){
+        if(maintainOrder.empty()){
+            maintainOrder.push(i);
+            newV.push_back(n-1);
+        }else{
+            if(v[maintainOrder.top()] >= v[i]){
+                while(!maintainOrder.empty() && v[maintainOrder.top()] >= v[i])
+                    maintainOrder.pop();
+                if(maintainOrder.empty()){
+                    maintainOrder.push(i);
+                    newV.push_back(n-1);
+                }else{
+                    long long idx = maintainOrder.top()-1;
+                    maintainOrder.push(i);
+                    newV.push_back(idx);
+                }
+            }else{
+                long long idx = maintainOrder.top()-1;
+                maintainOrder.push(i);
+                newV.push_back(idx);
+            }
+        }
+    }
+    return newV;
+}
+
+long long getMaxArea(vector<long long> v, vector<long long> left, vector<long long> right, long long n){
+    long long maxArea = -1;
+    for(long long i=0, j=n-1;i<n;i++, j--){
+        maxArea = max(maxArea, v[i]*abs(right[j]-left[i]+1));
+    }
+    return maxArea;
+}
+
+int main()
+{
+    long long n;
+    cin>>n;
+
+    vector<long long> v(n);
+    for(auto &it: v)cin>>it;
+
+    vector<long long> left, right;
+    left = leftRight(v, n);
+    right = rightLeft(v, n);
+
+    long long maxArea = getMaxArea(v, left, right, n);
+    cout<<maxArea<<endl;
+
+    return 0;
+}
