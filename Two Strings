@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--){
+        string s1, s2;
+        cin>>s1>>s2;
+        bool f = false;
+        
+        map<char, int> mp;
+        for(int i=0;i<s1.length();i++){
+            if(!mp[s1[i]])mp[s1[i]]++;
+        }
+        for(int i=0;i<s2.length();i++){
+            if(mp[s2[i]] == 1)mp[s2[i]]++;
+            if(mp[s2[i]]==2)f=true;
+        }
+        
+        if(f)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+    }
+    return 0;
+}
